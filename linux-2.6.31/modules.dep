@@ -1,0 +1,141 @@
+/lib/modules/2.6.31-rt11-lab126/kernel/fs/nls/nls_ascii.ko:
+/lib/modules/2.6.31-rt11-lab126/kernel/fs/nls/nls_utf8.ko:
+/lib/modules/2.6.31-rt11-lab126/kernel/fs/fuse/fuse.ko:
+/lib/modules/2.6.31-rt11-lab126/kernel/drivers/video/mxc/mxc_epdc_fb.ko: kernel/drivers/video/eink/waveform/eink_fb_waveform.ko
+/lib/modules/2.6.31-rt11-lab126/kernel/drivers/video/eink/waveform/eink_fb_waveform.ko:
+/lib/modules/2.6.31-rt11-lab126/kernel/drivers/video/eink/legacy/eink_fb_shim.ko: kernel/drivers/video/eink/hal/eink_fb_hal.ko
+/lib/modules/2.6.31-rt11-lab126/kernel/drivers/video/eink/hal/eink_fb_hal.ko:
+/lib/modules/2.6.31-rt11-lab126/kernel/drivers/video/eink/hal/eink_fb_hal_emu.ko: kernel/drivers/video/eink/hal/eink_fb_hal.ko
+/lib/modules/2.6.31-rt11-lab126/kernel/drivers/video/eink/hal/eink_fb_hal_fslepdc.ko: kernel/drivers/video/mxc/mxc_epdc_fb.ko kernel/drivers/video/eink/waveform/eink_fb_waveform.ko kernel/drivers/video/eink/hal/eink_fb_hal.ko
+/lib/modules/2.6.31-rt11-lab126/kernel/drivers/net/wireless/ar6003/ar6003.ko:
+/lib/modules/2.6.31-rt11-lab126/kernel/drivers/uio/uio_pdrv_genirq.ko:
+/lib/modules/2.6.31-rt11-lab126/kernel/drivers/input/keyboard/mxc_keyb.ko:
+/lib/modules/2.6.31-rt11-lab126/kernel/drivers/input/keyboard/tequila_keypad.ko:
+/lib/modules/2.6.31-rt11-lab126/kernel/drivers/input/misc/uinput.ko:
+/lib/modules/2.6.31-rt11-lab126/kernel/drivers/input/volume.ko:
+/lib/modules/2.6.31-rt11-lab126/kernel/drivers/input/fiveway.ko:
+/lib/modules/2.6.31-rt11-lab126/kernel/drivers/usb/gadget/arcotg_udc.ko:
+/lib/modules/2.6.31-rt11-lab126/kernel/drivers/usb/gadget/g_ether.ko: kernel/drivers/usb/gadget/arcotg_udc.ko
+/lib/modules/2.6.31-rt11-lab126/kernel/drivers/usb/gadget/g_file_storage.ko: kernel/drivers/usb/gadget/arcotg_udc.ko
+/lib/modules/2.6.31-rt11-lab126/kernel/drivers/usb/gadget/g_serial.ko: kernel/drivers/usb/gadget/arcotg_udc.ko
+/lib/modules/2.6.31-rt11-lab126/kernel/lib/crc-ccitt.ko:
+# pci module         vendor     device     subvendor  subdevice  class      class_mask driver_data
+# usb module         match_flags idVendor idProduct bcdDevice_lo bcdDevice_hi bDeviceClass bDeviceSubClass bDeviceProtocol bInterfaceClass bInterfaceSubClass bInterfaceProtocol driver_info
+# ccw module         match_flags cu_type cu_model dev_type dev_model
+# ieee1394 module    match_flags vendor_id model_id specifier_id version
+# isapnp module      cardvendor carddevice driver_data vendor     function   ...
+# module         matchBits bustype vendor product version evBits keyBits relBits absBits mscBits ledBits sndBits ffBits [swBits] driver_info
+# of module          name                 type                 compatible
+# serio module       type extra id   proto
+# Aliases extracted from modules themselves.
+alias char-major-10-229 fuse
+alias sdio:c*v0271d0301* ar6003
+alias sdio:c*v0271d0300* ar6003
+alias platform:uio_pdrv_genirq uio_pdrv_genirq
+alias platform:tequila-keypad tequila_keypad
+# Soft dependencies extracted from modules themselves.
+# Copy, with a .conf extension, to /etc/modprobe.d to use it with modprobe.
+# Aliases for symbols, used by symbol_request().
+alias symbol:einkfb_get_reset eink_fb_hal
+alias symbol:einkfb_set_reset eink_fb_hal
+alias symbol:einkfb_lock_entry eink_fb_hal
+alias symbol:einkfb_write_which eink_fb_hal
+alias symbol:einkwf_panel_set_update_modes eink_fb_waveform
+alias symbol:einkfb_stretch_nybble eink_fb_hal
+alias symbol:einkfb_schedule_timeout eink_fb_hal
+alias symbol:fuse_do_open fuse
+alias symbol:fuse_request_send_background fuse
+alias symbol:fuse_conn_put fuse
+alias symbol:einkwf_get_waveform_info eink_fb_waveform
+alias symbol:mxc_epdc_fb_set_temperature mxc_epdc_fb
+alias symbol:einkfb_set_reboot_hook eink_fb_hal
+alias symbol:einkwf_waveform_valid eink_fb_waveform
+alias symbol:fuse_sync_release fuse
+alias symbol:einkfb_gzip eink_fb_hal
+alias symbol:einkfb_lock_release eink_fb_hal
+alias symbol:einkfb_set_info_hook eink_fb_hal
+alias symbol:mxc_epdc_power_state mxc_epdc_fb
+alias symbol:einkfb_malloc eink_fb_hal
+alias symbol:einkfb_proc_sysfs_rw eink_fb_hal
+alias symbol:einkfb_set_ioctl_hook eink_fb_hal
+alias symbol:einkfb_get_force_interruptible eink_fb_hal
+alias symbol:einkfb_set_suspend_resume_hook eink_fb_hal
+alias symbol:einkwf_panel_flash_present eink_fb_waveform
+alias symbol:einkfb_align_bounds eink_fb_hal
+alias symbol:einkfb_hal_ops_init eink_fb_hal
+alias symbol:crc_ccitt crc_ccitt
+alias symbol:usb_gadget_register_driver arcotg_udc
+alias symbol:einkfb_lock_ready eink_fb_hal
+alias symbol:einkwf_panel_get_vcom_str eink_fb_waveform
+alias symbol:fuse_request_send fuse
+alias symbol:fuse_conn_get fuse
+alias symbol:einkwf_get_wavform_proxy_from_waveform eink_fb_waveform
+alias symbol:mxc_epdc_fb_wait_update_complete mxc_epdc_fb
+alias symbol:einkfb_get_power_override_state eink_fb_hal
+alias symbol:einkfb_create_proc_entry eink_fb_hal
+alias symbol:mxc_epdc_get_pwrdown_delay mxc_epdc_fb
+alias symbol:einkwf_panel_get_waveform_mode eink_fb_waveform
+alias symbol:crc_ccitt_table crc_ccitt
+alias symbol:fuse_file_poll fuse
+alias symbol:einkwf_panel_waveform_free eink_fb_waveform
+alias symbol:einkfb_memset eink_fb_hal
+alias symbol:einkfb_ioctl eink_fb_hal
+alias symbol:mxc_epdc_fb_set_upd_scheme mxc_epdc_fb
+alias symbol:einkfb_set_blank_unblank_level eink_fb_hal
+alias symbol:einkwf_panel_get_waveform eink_fb_waveform
+alias symbol:einkwf_panel_supports_vcom eink_fb_waveform
+alias symbol:einkwf_panel_get_waveform_info eink_fb_waveform
+alias symbol:mxc_epdc_fb_set mxc_epdc_fb
+alias symbol:einkwf_set_buffer_size eink_fb_waveform
+alias symbol:einkwf_get_buffer_size eink_fb_waveform
+alias symbol:fuse_do_ioctl fuse
+alias symbol:einkwf_get_commands_version_string eink_fb_waveform
+alias symbol:einkwf_panel_get_waveform_version_string eink_fb_waveform
+alias symbol:einkfb_blank eink_fb_hal
+alias symbol:fuse_conn_kill fuse
+alias symbol:power_level_initiated_call eink_fb_hal
+alias symbol:einkfb_get_skip_buffers_equal eink_fb_hal
+alias symbol:hostdef ar6003
+alias symbol:fuse_conn_init fuse
+alias symbol:einkfb_power_override_begin eink_fb_hal
+alias symbol:mxc_epdc_blit_to_fb mxc_epdc_fb
+alias symbol:einkfb_power_override_end eink_fb_hal
+alias symbol:einkfb_free eink_fb_hal
+alias symbol:einkfb_get_info eink_fb_hal
+alias symbol:einkwf_commands_valid eink_fb_waveform
+alias symbol:fuse_direct_io fuse
+alias symbol:mxc_epdc_fb_set_waveform_modes mxc_epdc_fb
+alias symbol:mxc_epdc_fb_set_pwrdown_delay mxc_epdc_fb
+alias symbol:einkwf_get_commands_info eink_fb_waveform
+alias symbol:fuse_dev_operations fuse
+alias symbol:mxc_epdc_set_wv_file mxc_epdc_fb
+alias symbol:einkfb_get_last_bounds_failure eink_fb_hal
+alias symbol:einkfb_ioctl_dispatch eink_fb_hal
+alias symbol:einkwf_read_waveform_from_file eink_fb_waveform
+alias symbol:einkfb_get_flash_mode eink_fb_hal
+alias symbol:einkwf_panel_get_vcom eink_fb_waveform
+alias symbol:mxc_epdc_fb_send_update mxc_epdc_fb
+alias symbol:einkfb_read_which eink_fb_hal
+alias symbol:einkfb_gunzip eink_fb_hal
+alias symbol:einkwf_set_buffer eink_fb_waveform
+alias symbol:einkwf_get_buffer eink_fb_waveform
+alias symbol:targetdef ar6003
+alias symbol:einkfb_memcpy eink_fb_hal
+alias symbol:einkwf_write_waveform_to_file eink_fb_waveform
+alias symbol:einkfb_hal_ops_done eink_fb_hal
+alias symbol:einkfb_bounds_are_acceptable eink_fb_hal
+alias symbol:einkfb_blit eink_fb_hal
+alias symbol:mxc_epdc_clr_wv_file mxc_epdc_fb
+alias symbol:einkfb_lock_exit eink_fb_hal
+alias symbol:usb_gadget_unregister_driver arcotg_udc
+alias symbol:fuse_put_request fuse
+alias symbol:mxc_epdc_fb_set_auto_update mxc_epdc_fb
+alias symbol:fuse_get_req fuse
+alias symbol:einkfb_get_cmd_string eink_fb_hal
+alias symbol:einkwf_get_waveform_version_string eink_fb_waveform
+alias symbol:fuse_request_alloc fuse
+alias symbol:mxc_epdc_get_var_fix_info mxc_epdc_fb
+alias symbol:fuse_abort_conn fuse
+alias symbol:einkfb_remove_proc_entry eink_fb_hal
+alias symbol:fuse_dev_release fuse
+# Device nodes to trigger on-demand module loading.
