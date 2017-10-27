@@ -203,17 +203,11 @@ static void set_waveform_modes(struct mxc_epdc_fb_data *fb_data)
     waveform_modes.mode_init = einkwf_panel_get_waveform_mode(WF_UPD_MODE_INIT);
     waveform_modes.mode_du   = einkwf_panel_get_waveform_mode(WF_UPD_MODE_MU);
     waveform_modes.mode_gc4  = einkwf_panel_get_waveform_mode(WF_UPD_MODE_GU);
-    waveform_modes.mode_gc8  = einkwf_panel_get_waveform_mode(WF_UPD_MODE_GU);
-    waveform_modes.mode_gc16 = einkwf_panel_get_waveform_mode(WF_UPD_MODE_GU);
-    waveform_modes.mode_gc16_fast = einkwf_panel_get_waveform_mode(WF_UPD_MODE_GCF);
+    waveform_modes.mode_gc8  = einkwf_panel_get_waveform_mode(WF_UPD_MODE_GC);
+    waveform_modes.mode_gc16 = einkwf_panel_get_waveform_mode(WF_UPD_MODE_GC);
     waveform_modes.mode_gc32 = einkwf_panel_get_waveform_mode(WF_UPD_MODE_GC);
     waveform_modes.mode_gl16 = einkwf_panel_get_waveform_mode(WF_UPD_MODE_GL);
-    waveform_modes.mode_gl16_fast = einkwf_panel_get_waveform_mode(WF_UPD_MODE_GLF);
-    waveform_modes.mode_a2 = einkwf_panel_get_waveform_mode(WF_UPD_MODE_PU);
-    waveform_modes.mode_du4 = einkwf_panel_get_waveform_mode(WF_UPD_MODE_DU4);
-    waveform_modes.mode_reagl = einkwf_panel_get_waveform_mode(WF_UPD_MODE_RGL);
-    waveform_modes.mode_reagld = einkwf_panel_get_waveform_mode(WF_UPD_MODE_RGLD);
-		
+    
     mxc_epdc_fb_set_waveform_modes(&waveform_modes, (struct fb_info *) fb_data);
 }
 
@@ -224,8 +218,26 @@ static void set_waveform_modes(struct mxc_epdc_fb_data *fb_data)
 
 static void set_vcom(struct mxc_epdc_fb_data *fb_data, int vcom)
 {
+    int ret;
+    
     // Wake up the display pmic
     mutex_lock(&fb_data->power_mutex);
+
+    ret = regulator_enable(fb_data->display_regulator);
+    if (IS_ERR((void *)ret)) {
+	dev_err(fb_data->dev, "Unable to enable DISPLAY regulator."
+		"err = 0x%x\n", ret);
+	mutex_unlock(&fb_data->power_mutex);
+	return;
+    }
+    ret = regulator_enable(fb_data->vcom_regulator);
+    if (IS_ERR((void *)ret)) {
+	dev_err(fb_data->dev, "Unable to enable VCOM regulator."
+		"err = 0x%x\n", ret);
+		regulator_disable(fb_data->display_regulator);
+	mutex_unlock(&fb_data->power_mutex);
+	return;
+    }
 
     // Note:  The set-voltage operation takes a min and max value in uV.  But we really
     //        only use the max value to set VCOM with.
@@ -238,6 +250,11 @@ static void set_vcom(struct mxc_epdc_fb_data *fb_data, int vcom)
     {
         dev_dbg(fb_data->dev, "VCOM = %d\n", uV_to_mV(regulator_get_voltage(fb_data->vcom_regulator)));
     }
+    
+
+    /* Disable power to the EPD panel */
+    regulator_disable(fb_data->vcom_regulator);
+    regulator_disable(fb_data->display_regulator);
     
     mutex_unlock(&fb_data->power_mutex);
 }
@@ -300,13 +317,7 @@ void mxc_epdc_waveform_init(struct mxc_epdc_fb_data *fb_data)
 
     // Say that we want to switch to portrait mode. 
     //
-    if(mx50_board_is_celeste() || mx50_board_is_celeste_wfo() 
-       || mx50_board_is(BOARD_ID_YOSHIME))
-    {    
-        tmpvar.rotate = FB_ROTATE_CCW; 
-    }else{
-        tmpvar.rotate = FB_ROTATE_CW;
-    }
+    tmpvar.rotate = FB_ROTATE_CW;
     tmpvar.activate = FB_ACTIVATE_FORCE | FB_ACTIVATE_NOW | FB_ACTIVATE_ALL;
     fb_set_var(&(fb_data->info), &tmpvar);   
 }
